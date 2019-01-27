@@ -13,6 +13,11 @@ class World
     std::shared_ptr<IClient> client01;
     std::shared_ptr<IClient> client02;
 
+    sf::Font font;
+    sf::Text hudText;
+    const int settingCount = 9;
+    int currentSetting = 0;
+    
 public:
     World();
     int mainLoop();
