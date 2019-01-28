@@ -20,7 +20,7 @@ PauseMessage::PauseMessage()
     settings.push_back({ "perlinFrequencyBase", &perlinFrequencyBase });
 }
 
-void PauseMessage::userEvent(sf::Event event)
+void PauseMessage::userEvent(const sf::Event event)
 {
     if(event.type == sf::Event::KeyPressed)
     {
@@ -56,7 +56,7 @@ void PauseMessage::drawContolInfromation(sf::RenderWindow& window)
         //<< "Frame:  " << clock.restart().asMilliseconds() << "ms\n"
         << "Use the arrow keys to change the values.\nUse the return key to regenerate the terrain.\n\n";
 
-    for(int i = 0; i < settings.size(); ++i)
+    for(auto i = 0; i < settings.size(); ++i)
     {
         osstr 
             << ((i == currentSetting) ? ">>  " : "       ") 

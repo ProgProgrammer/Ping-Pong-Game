@@ -19,7 +19,7 @@ class PauseMessage
 
     float perlinFrequency = 7.0f;
     float perlinFrequencyBase = 4.0f;
-    std::vector<Setting> settings;
+    std::vector<Setting> settings{};
 
 public:
     PauseMessage();

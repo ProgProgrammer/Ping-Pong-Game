@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "ClientFactory.h"
 #include "Server.h"
+#include "PauseMessage.h"
 
 class World
 {

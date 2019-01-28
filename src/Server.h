@@ -2,7 +2,6 @@
 #include "ServerPackage.h"
 #include "Ball.h"
 #include "Paddle.h"
-#include "PauseMessage.h"
 #include "ClientFactory.h"
 
 class Server

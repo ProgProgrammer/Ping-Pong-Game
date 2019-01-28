@@ -188,6 +188,7 @@ void Server::setClient02(const std::shared_ptr<IClient> client)
 
 ServerPackage Server::getPackage() const
 {
+    // ReSharper disable once CppInitializedValueIsAlwaysRewritten
     ServerPackage sp{};
     sp.screenSize = {gameWidth, gameHeight};
     sp.leftPaddleCenter = leftPaddle.getPosition();

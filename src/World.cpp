@@ -47,8 +47,8 @@ int World::mainLoop()
         client01->updateState();
         client02->setServerPackage(serverPackage);
         client02->updateState();        
-        server.iterate();        
-        ServerPackage sp = server.getPackage();
+        server.iterate();
+        const auto sp = server.getPackage();
         pauseMessage.setServerPackage(sp);
 
         window.clear(sf::Color(50, 200, 50)); // Clear the window
