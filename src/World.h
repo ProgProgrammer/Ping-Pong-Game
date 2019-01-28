@@ -2,11 +2,11 @@
 #include <SFML/Graphics.hpp>
 #include "ClientFactory.h"
 #include "Server.h"
+#include "SettingsParser.hpp"
 
 class World
 {
-    const int gameWidth = 800;
-    const int gameHeight = 600;
+    SettingsParser settings;
     sf::RenderWindow window;
     Server server;
     ClientFactory clientFactory;

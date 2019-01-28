@@ -7,8 +7,8 @@
 
 class Server
 {
-    const int gameWidth;
-    const int gameHeight;
+    int gameWidth{};
+    int gameHeight{};
 
     Paddle leftPaddle;
     Paddle rightPaddle;
@@ -32,7 +32,9 @@ class Server
     std::shared_ptr<IClient> client02;
 
 public:
+    Server() = default;
     Server(int gameWidht, int gameHeight);
+    void create(int gameWidht, int gameHeight);
     void restartGame();
     void draw(sf::RenderWindow& window);
     void iterate();

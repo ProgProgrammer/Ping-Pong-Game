@@ -28,9 +28,15 @@ void Server::loadTextFont()
 }
 
 Server::Server(const int gameWidht, const int gameHeight)
-    : gameWidth(gameWidht)
-    , gameHeight(gameHeight)
 {
+    create(gameWidht, gameHeight);
+}
+
+void Server::create(int gameWidht, int gameHeight)
+{
+    this->gameWidth = gameWidht;
+    this->gameHeight = gameHeight;
+
     loadBallSoundBuffer();
     loadTextFont();
 
