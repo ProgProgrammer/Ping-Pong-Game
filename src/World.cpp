@@ -1,10 +1,28 @@
 ﻿#include "stdafx.h"
 #include "World.h"
 
-World::World(): window(sf::VideoMode(gameWidth, gameHeight, 32), "SFML Pong",
-                       sf::Style::Titlebar | sf::Style::Close)
-                , server(gameWidth, gameHeight)
+World::World()
 {
+    if(!settings.loadFromFile("resources/settings.txt"))
+    {
+        throw std::logic_error("Error loading settings file!");
+    }
+
+    int width = 800;
+    int height = 600;
+    settings.get("width", width);
+    settings.get("height", height);
+
+    std::string title = "PingPong";
+    settings.get("title", title);
+
+    settings.print();
+
+    window.create(sf::VideoMode(width, height, 32), title,
+        sf::Style::Titlebar | sf::Style::Close);
+
+    server.create(width, height);
+
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
     window.setVerticalSyncEnabled(true);
     client01 = clientFactory.createClient(ClientType::User, "WS");

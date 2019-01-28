@@ -1,0 +1,6 @@
+# screen size
+width = 1024
+height = 768
+
+# window title
+title = Ping Pong Game (name loaded from settings)
