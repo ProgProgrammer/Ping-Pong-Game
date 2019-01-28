@@ -14,13 +14,11 @@ class Server
     Paddle rightPaddle;
     Ball ball;
     sf::SoundBuffer ballSoundBuffer;
-    sf::Font font;
-    PauseMessage pauseMessage;
 
     bool isAutoChangeColor = true;
     bool isSurpriseMode = false;
 
-    bool isPlaying = false;
+    GameStatus gameStatus = GameStatus::Init;
 
     const float paddleSpeed = 400.f;
     const float ballSpeed = 400.f;
@@ -42,7 +40,6 @@ public:
 
 private:
     void loadBallSoundBuffer();
-    void loadTextFont();
     void checkPaddlesCollision();
     void checkScreenCollision();
     void movePaddles(float);

@@ -15,38 +15,21 @@ void Server::loadBallSoundBuffer()
     ball.setSoundBuffer(ballSoundBuffer);
 }
 
-void Server::loadTextFont()
-{
-    // Load the text font
-    const std::string fontFileName = "resources/sansation.ttf";
-    if (!font.loadFromFile(fontFileName))
-    {
-        std::stringstream ss;
-        ss << "can't load font from file " << fontFileName;
-        throw std::runtime_error(ss.str());
-    }
-}
-
 Server::Server(const int gameWidht, const int gameHeight)
     : gameWidth(gameWidht)
     , gameHeight(gameHeight)
 {
     loadBallSoundBuffer();
-    loadTextFont();
 
     leftPaddle.setFillColor(sf::Color(100, 100, 200));
     rightPaddle.setFillColor(sf::Color(200, 100, 100));
-
-    pauseMessage.setFont(font);
-    pauseMessage.setString("Welcome to SFML pong!\nPress space to start the game");
 }
 
 void Server::restartGame()
 {
-    if (!isPlaying)
+    if (gameStatus != GameStatus::Playing)
     {
-        // (re)start the game
-        isPlaying = true;
+        gameStatus = GameStatus::Playing;
         clock.restart();
 
         // Reset the position of the paddles and ball
@@ -66,18 +49,11 @@ void Server::restartGame()
 
 void Server::draw(sf::RenderWindow& window)
 {
-    // Clear the window
-    window.clear(sf::Color(50, 200, 50));
-
-    if (isPlaying)
+    if (gameStatus == GameStatus::Playing)
     {
         leftPaddle.draw(window);
         rightPaddle.draw(window);
         ball.draw(window);
-    }
-    else
-    {
-        pauseMessage.draw(window);
     }
 }
 
@@ -131,14 +107,12 @@ void Server::checkScreenCollision()
     // LEFT
     if (ball.getPosition().x - ball.getRadius() < 0.f)
     {
-        isPlaying = false;
-        pauseMessage.setString("You lost!\nPress space to restart or\nescape to exit");
+        gameStatus = GameStatus::Lose;
     }
     // RIGHT
     if (ball.getPosition().x + ball.getRadius() > gameWidth)
     {
-        isPlaying = false;
-        pauseMessage.setString("You won!\nPress space to restart or\nescape to exit");
+        gameStatus = GameStatus::Win;
     }
     // TOP
     if (ball.getPosition().y - ball.getRadius() < 0.f)
@@ -190,9 +164,10 @@ void Server::moveBall(const float deltaTime)
 
 void Server::iterate()
 {
-    if (!isPlaying)
+    if (gameStatus != GameStatus::Playing)
         return;
 
+    // TODO Possible error in pause menu
     const auto deltaTime = clock.restart().asSeconds();
 
     movePaddles(deltaTime);
@@ -223,5 +198,6 @@ ServerPackage Server::getPackage() const
     sp.ballRadius = ball.getRadius();
     sp.paddleSpeed = paddleSpeed;
     sp.ballSpeed = ballSpeed;
+    sp.gameStatus = gameStatus;
     return sp;
 }

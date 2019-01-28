@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/System/Vector2.hpp>
 
+enum class GameStatus { Init, Lose, Win, Pause, Playing };
+
 struct ServerPackage
 {
     sf::Vector2i screenSize;
@@ -12,4 +14,5 @@ struct ServerPackage
     float ballRadius;
     float paddleSpeed;
     float ballSpeed;
+    GameStatus gameStatus;
 };
