@@ -3,10 +3,11 @@
 #include "ClientFactory.h"
 #include "Server.h"
 #include "SettingsParser.hpp"
+#include "WorldSettings.h"
 
 class World
 {
-    SettingsParser settings;
+    WorldSettings worldSettings;
     sf::RenderWindow window;
     Server server;
     ClientFactory clientFactory;
