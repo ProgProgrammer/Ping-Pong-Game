@@ -1,6 +1,13 @@
 # screen size
-width = 1024
-height = 768
+width = 800
+height = 600
 
 # window title
-title = Ping Pong Game (name loaded from settings)
+title = Ping Pong Game
+
+# Player types are User or Bot
+# Control keys use to control in order up/down
+FirstPlayer = User
+FirstPlayerControlKeys = WS
+SecondPlayer = Bot
+SecondPlayerControlKeys = PL
