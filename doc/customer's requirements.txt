@@ -5,3 +5,11 @@ CR002-REJECT. Change color.
 CR003-MOVE. Menu to sound setup or button to disable volume.
 CR004-DONE. Change ball color by reflecting from Paddle.
 CR005. Add rang for game in one session.
+CR006. Add several modes to game:
+  1. Company mode - several levels in cirtain order to finish.
+  2. Random level from company.
+CR007. Add levels
+  - Speed up bot paddle with level increasing
+  - Speed up ball
+CR008. Add random count (1 to 2) degrees to reflect angle from paddle.
+CR009. Player can change speed of him Paddle.
